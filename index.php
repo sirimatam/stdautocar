@@ -21,14 +21,14 @@ if ( sizeof($request_array['events']) > 0 )
 	$correct = 0;
 	foreach ($greeting as $value)
 	{
-		if ($text == $value1)
+		if ($text == $value)
 		{
 			$correct = 1;
 		}
 	}
 	foreach ($greeting as $value)
 	{
-		if ($text == $value1)
+		if ($text == $value)
 		{
 			$correct = 1;
 		}
