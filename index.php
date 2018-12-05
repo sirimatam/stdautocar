@@ -17,12 +17,18 @@ if ( sizeof($request_array['events']) > 0 )
     $text = $event['message']['text'];
 	
 	$greeting = array('Hi','Hello','ดีจ้า','สวัสดี','สวัสดีครับ');
-	$nameuser
 	
 	$correct = 0;
 	foreach ($greeting as $value)
 	{
-		if ($text == $value)
+		if ($text == $value1)
+		{
+			$correct = 1;
+		}
+	}
+	foreach ($greeting as $value)
+	{
+		if ($text == $value1)
 		{
 			$correct = 1;
 		}
@@ -30,12 +36,12 @@ if ( sizeof($request_array['events']) > 0 )
 	if ($correct == 1)
 	{
 		$reply_message = 'Hi,what is you name';
-		$correct = 2;
+		$checkname = 1;
 	}
-	if ($correct == 2)
+	if ($checkname == 1)
 	{
-		$correct == 3;
 		$reply_message = $text.','.'what can i help you?';
+		$checkname = 0;
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
@@ -74,4 +80,3 @@ function send_reply_message($url, $post_header, $post_body)
  return $result;
 }
 ?>
-
