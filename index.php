@@ -1,69 +1,89 @@
 <?php
-$API_URL = 'https://api.line.me/v2/bot/message/reply';
-$ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5NzlLRmgGiFA2sTLoxwN5PVxXN2QMwMf3Y45fLcYsi6wI2Sw7BoqUzGU4kCU6I9NJwsVlnibO8YL6Id1U9rHEkowdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
-$POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
-$request = file_get_contents('php://input');   // Get request content
-$request_array = json_decode($request, true);   // Decode JSON to Array
-if ( sizeof($request_array['events']) > 0 )
-{
- foreach ($request_array['events'] as $event)
- {
-  $reply_message = '';
-  $reply_token = $event['replyToken'];
-  if ( $event['type'] == 'message' ) 
-  {
-   if( $event['message']['type'] == 'text' )
-   {
-    $text = $event['message']['text'];
-	
-	$greeting = array('Hi','Hello','ดีจ้า','สวัสดี','สวัสดีครับ');
-	
-	$correct = 0;
-	foreach ($greeting as $value)
-	{
-		if ($text == $value)
-		{
-			$correct = 1;
+require_once 'autoload.php';
+use Logger;
+use StreamHandler;
+use FirePHPHandler;
+$logger = new Logger('LineBot');
+$logger->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV["LINEBOT_ACCESS_TOKEN"]);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV["LINEBOT_CHANNEL_SECRET"]]);
+$signature = $_SERVER['HTTP_' . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+try {
+	$events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+} catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
+	error_log('parseEventRequest failed. InvalidSignatureException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
+	error_log('parseEventRequest failed. UnknownEventTypeException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
+	error_log('parseEventRequest failed. UnknownMessageTypeException => '.var_export($e, true));
+} catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
+	error_log('parseEventRequest failed. InvalidEventRequestException => '.var_export($e, true));
+}
+foreach ($events as $event) {
+	// Postback Event
+	if (($event instanceof \LINE\LINEBot\Event\PostbackEvent)) {
+		$logger->info('Postback message has come');
+		continue;
+	}
+	// Location Event
+	if  ($event instanceof LINE\LINEBot\Event\MessageEvent\LocationMessage) {
+		$logger->info("location -> ".$event->getLatitude().",".$event->getLongitude());
+		continue;
+	}
+	// Message Event = TextMessage
+	if (($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+		$messageText=strtolower(trim($event->getText()));
+		switch ($messageText) {
+		case "text" : 
+			$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("text message");
+			break;
+		case "location" :
+			$outputText = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("Eiffel Tower", "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France", 48.858328, 2.294750);
+			break;
+		case "button" :
+			$actions = array (
+				// general message action
+				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("button 1", "text 1"),
+				// URL type action
+				New \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("Google", "http://www.google.com"),
+				// The following two are interactive actions
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("next page", "page=3"),
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Previous", "page=1")
+			);
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("button text", "description", $img_url, $actions);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+			break;
+		case "carousel" :
+			$columns = array();
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			for($i=0;$i<5;$i++) {
+				$actions = array(
+					new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Add to Card","action=carousel&button=".$i),
+					new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("View","http://www.google.com")
+				);
+				$column = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Title", "description", $img_url , $actions);
+				$columns[] = $column;
+			}
+			$carousel = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Carousel Demo", $carousel);
+			break;	
+		case "image" :
+			$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+			$outputText = new LINE\LINEBot\MessageBuilder\ImageMessageBuilder($img_url, $img_url);
+			break;	
+		case "confirm" :
+			$actions = array (
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
+				New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
+			);
+			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("problem", $actions);
+			$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+			break;
+		default :
+			$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("demo command: text, location, button, confirm to test message template");	
+			break;
 		}
+		$response = $bot->replyMessage($event->getReplyToken(), $outputText);
 	}
-	if ($correct == 1)
-	{
-		$reply_message = 'Hi,what is you name';
-	}
-	else
-	$reply_message = 'why dont you say hello to me';
-   }
-   else
-    $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
-  
-  }
-  else
-   $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
- 
-  if( strlen($reply_message) > 0 )
-  {
-   //$reply_message = iconv("tis-620","utf-8",$reply_message);
-   $data = [
-    'replyToken' => $reply_token,
-    'messages' => [['type' => 'text', 'text' => $reply_message]]
-   ];
-   $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-   $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
-   echo "Result: ".$send_result."\r\n";
-  }
- }
-}
-echo "OK";
-function send_reply_message($url, $post_header, $post_body)
-{
- $ch = curl_init($url);
- curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
- curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
- curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
- curl_setopt($ch, CURLOPT_POSTFIELDS, $post_body);
- curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
- $result = curl_exec($ch);
- curl_close($ch);
- return $result;
-}
-?>
+}  
