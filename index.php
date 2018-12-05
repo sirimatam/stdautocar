@@ -17,17 +17,17 @@ if ( sizeof($request_array['events']) > 0 )
     $text = $event['message']['text'];
 	switch ($text)
 	{
-		case "car" :
-				$actions = '';
-		$img_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18fuRVCTVSwioPxPozbRuUlL7FF_y6gTonL0mDWZlu75v0pecIQ";
+		case 'car' :
+		$actions = '';
+		$img_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18fuRVCTVSwioPxPozbRuUlL7FF_y6gTonL0mDWZlu75v0pecIQ';
 		$actions = array(
-				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("brand", "bmw"),
+				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('brand', 'bmw'),
 				// URL type action
-				New \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("year", "2010")
+				New \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('year', '2010')
 				// The following two are interactive actions
 			);
-		$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("button text", "description", $img_url, $actions);
-		$reply_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+		$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder('button text', 'description', $img_url, $actions);
+		$reply_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('this message to use the phone to look to the Oh', $button);
 		break;
 	}
 	$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
@@ -66,3 +66,4 @@ function send_reply_message($url, $post_header, $post_body)
  return $result;
 }
 ?>
+
