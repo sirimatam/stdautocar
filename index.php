@@ -34,16 +34,6 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	if ($checkname == 1)
 	{
-		foreach ($greeting as $value)
-	{
-		if ($text == $value)
-		{
-			$correct = 2;
-		}
-	}
-	}
-	if ($correct == 2)
-	{
 		$reply_message = $text.','.'what can i help you?';
 		$checkname = 0;
 	}
