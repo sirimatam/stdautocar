@@ -15,7 +15,22 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-    $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+	if $text = 'car'
+	{
+		$actions = '';
+		$img_url = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18fuRVCTVSwioPxPozbRuUlL7FF_y6gTonL0mDWZlu75v0pecIQ
+		$actions = array(
+				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("brand", "bmw"),
+				// URL type action
+				New \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("year", "2010")
+				// The following two are interactive actions
+			);
+		$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("button text", "description", $img_url, $actions);
+		$reply_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
+    }
+
+	else
+	$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
    }
    else
     $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
