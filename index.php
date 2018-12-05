@@ -15,7 +15,16 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	if ($text == 'hi')
+	$greeting = array('hi','hello');
+	$correct = 0;
+	foreach ($greeting as $value)
+	{
+		if ($text == $value)
+		{
+			$correct = 1;
+		}
+	}
+	if ($correct == 1)
 	{
 		$reply_message = 'hi,may i help';
 	}
