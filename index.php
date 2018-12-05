@@ -32,7 +32,7 @@ if ( sizeof($request_array['events']) > 0 )
 		$reply_message = 'Hi,what is you name';
 		$checkname = 1;
 	}
-	if ($checkname == 1) && ($correct == 0)
+	else if ($checkname == 1) && ($correct == 0)
 	{
 		$reply_message = $text.','.'what can i help you?';
 		$checkname = 0;
