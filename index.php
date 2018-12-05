@@ -40,7 +40,7 @@ if ( sizeof($request_array['events']) > 0 )
 	$reply_message = 'why dont you say hello to me';
    }
    else
-    $reply_message = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว');
+    $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
   
   }
   else
