@@ -15,16 +15,9 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	$hello = array('hi','yo','who are you');
-	
-	foreach( $hello as $value)
+	if ($text = 'hi')
 	{
-		if( $text = $value)
-		{
-			$reply_message = 'hi,may i help';
-		}
-	{
-	$reply_message = 'why dont you say hello to me';
+		$reply_message = 'hi,may i help';
 	}
 	else
 	$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
