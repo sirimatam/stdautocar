@@ -15,10 +15,11 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	if $text = 'car'
+	switch ($text)
 	{
-		$actions = '';
-		$img_url = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18fuRVCTVSwioPxPozbRuUlL7FF_y6gTonL0mDWZlu75v0pecIQ
+		case "car" :
+				$actions = '';
+		$img_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18fuRVCTVSwioPxPozbRuUlL7FF_y6gTonL0mDWZlu75v0pecIQ";
 		$actions = array(
 				New \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("brand", "bmw"),
 				// URL type action
@@ -27,9 +28,8 @@ if ( sizeof($request_array['events']) > 0 )
 			);
 		$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("button text", "description", $img_url, $actions);
 		$reply_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("this message to use the phone to look to the Oh", $button);
-    }
-
-	else
+		break;
+	}
 	$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
    }
    else
