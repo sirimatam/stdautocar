@@ -17,9 +17,9 @@ if ( sizeof($request_array['events']) > 0 )
     $text = $event['message']['text'];
 	$hello = array('hi','yo','who are you');
 	
-	for($i=0,i<=2)
+	foreach( $hello as $value)
 	{
-		if( $text = $hello[$i])
+		if( $text = $value)
 		{
 			$reply_message = 'hi,may i help';
 		}
