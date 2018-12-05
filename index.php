@@ -1,9 +1,9 @@
 <?php
 
 require_once 'autoload.php';
-use Logger;
-use StreamHandler;
-use FirePHPHandler;
+use 'Logger';
+use 'StreamHandler';
+use 'FirePHPHandler';
 
 $API_URL = 'https://api.line.me/v2/bot/message/reply';
 $ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5NzlLRmgGiFA2sTLoxwN5PVxXN2QMwMf3Y45fLcYsi6wI2Sw7BoqUzGU4kCU6I9NJwsVlnibO8YL6Id1U9rHEkowdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
@@ -40,11 +40,11 @@ if ( sizeof($request_array['events']) > 0 )
 	$reply_message = 'why dont you say hello to me';
    }
    else
-    $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
+    $reply_message = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว');
   
   }
   else
-   $reply_message = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว');
+   $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
  
   if( strlen($reply_message) > 0 )
   {
