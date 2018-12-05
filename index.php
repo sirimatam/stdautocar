@@ -26,21 +26,9 @@ if ( sizeof($request_array['events']) > 0 )
 			$correct = 1;
 		}
 	}
-	
 	if ($correct == 1)
 	{
 		$reply_message = 'Hi,what is you name';
-		$checkname = 1;
-	}
-	if ($checkname == 1) && ($correct == 0)
-	{
-		$correct = 2;
-	}
-	
-	if ($correct == 2)
-	{
-		$reply_message = $text.','.'what can i help you?';
-		$checkname = 0;
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
