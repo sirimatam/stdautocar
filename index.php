@@ -15,7 +15,7 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	if ($text = hi)
+	if ($text = 'hi')
 	{
 		$reply_message = 'hi,may i help';
 	}
