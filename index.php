@@ -15,7 +15,10 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	$greeting = array('hi','hello');
+	
+	$greeting = array('Hi','Hello','ดีจ้า','สวัสดี','สวัสดีครับ');
+	$nameuser
+	
 	$correct = 0;
 	foreach ($greeting as $value)
 	{
@@ -26,10 +29,16 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	if ($correct == 1)
 	{
-		$reply_message = 'hi,may i help';
+		$reply_message = 'Hi,what is you name';
+		$correct = 2;
+	}
+	if ($correct == 2)
+	{
+		$correct == 3;
+		$reply_message = $text.','.'what can i help you?';
 	}
 	else
-	$reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+	$reply_message = 'why dont you say hello to me';
    }
    else
     $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
@@ -65,3 +74,4 @@ function send_reply_message($url, $post_header, $post_body)
  return $result;
 }
 ?>
+
