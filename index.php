@@ -88,11 +88,14 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	elseif($text==4)
 	{
+		$cus_id_last = pg_fetch_row(pg_query($db, "SELECT Max(cus_id)"))[0];
+		
+		
 		$result = pg_query($db,"SELECT * FROM Customer1");
 		$custlist ='';
 		while ($list = pg_fetch_array($result))
 		{$custlist += $list;}
-		$reply_message = "$custlist";
+		$reply_message = $cus_id_last;
 	}	
 	   
 	else
