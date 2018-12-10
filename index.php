@@ -76,13 +76,10 @@ if ( sizeof($request_array['events']) > 0 )
 	
 	if($check ==1)
 	{
-		$result = pg_query($db,"SELECT COUNT(*) FROM Customer");
-		$list = pg_fetch_row($result);
-		$reply_message = " result = $list[0]";
+		$reply_message = 'ขณะนี้มีรถอยู่ในระบบทั้งหมด 20 คัน';
 	}
 	elseif($check ==2)
 	{
-		pg_query($db,"INSERT INTO Customer VALUES ('c01','Somkit')");
 		$reply_message = 'อู่คุณวิชัย 023334444';
 	}
 	elseif($text==3)
