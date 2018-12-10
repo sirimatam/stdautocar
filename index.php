@@ -4,8 +4,6 @@ $db = pg_connect("host=ec2-54-235-193-0.compute-1.amazonaws.com port=5432 dbname
 echo $db;
 
 //pg_query($db,"CREATE TABLE Customer1 (cus_id varchar(5) NOT NULL PRIMARY KEY, cus_name varchar(30) NOT NULL, cus_lastname varchar(30) NOT NULL, cus_pic varchar(30) NOT NULL)");
-
-
 //pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C003','AAA','ABC','no')");
 
 /*
@@ -88,6 +86,7 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	elseif($text==4)
 	{
+		/*
 		$cus_id_last = pg_fetch_row(pg_query($db, "SELECT Max(cus_id)"))[0];
 		
 		
@@ -96,6 +95,8 @@ if ( sizeof($request_array['events']) > 0 )
 		while ($list = pg_fetch_array($result))
 		{$custlist += $list;}
 		$reply_message = $cus_id_last;
+		*/
+		$reply_message = 'error';
 	}	
 	   
 	else
