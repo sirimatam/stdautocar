@@ -54,18 +54,32 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		if ($text == $value)
 		{
-			$correct = 1;
+			$reply_message = 'Hi,what is you name';
 		}
+		else
+		$reply_message = 'why dont you say hello to me';
 	}
-	if ($correct == 1)
-	{
-		$reply_message = 'Hi,what is you name';
-	}
-	else
-	$reply_message = 'why dont you say hello to me';
    }
+   elseif($text ==1)
+   {
+	   $reply_message = 'ขณะนี้มีรถในระบบจำนวน 20 คัน';
+   }
+   elseif($text ==2)
+   {
+	   $reply_message = 'อู่ A 023333322';
+   }
+   elseif($text==3)
+   {
+	   $reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
+   }
+   elseif($text==4)
+   {
+	   $reply_message = ':)';
+   }
+	  
+	   
    else
-    $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
+    $reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน, พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า';
   
   }
   else
