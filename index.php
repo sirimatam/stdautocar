@@ -58,7 +58,6 @@ if ( sizeof($request_array['events']) > 0 )
 		}
 	
 	}
-   }
    elseif($text ==1)
    {
 	   $reply_message = 'ขณะนี้มีรถในระบบจำนวน 20 คัน';
@@ -75,6 +74,8 @@ if ( sizeof($request_array['events']) > 0 )
    {
 	   $reply_message = ':)';
    }
+   }
+   
 	  
 	   
    else
