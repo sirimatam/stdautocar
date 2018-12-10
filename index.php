@@ -5,8 +5,9 @@ echo $db;
 
 //pg_query($db,"CREATE TABLE Customer1 (cus_id varchar(5) NOT NULL PRIMARY KEY, cus_name varchar(30) NOT NULL, cus_lastname varchar(30) NOT NULL, cus_pic varchar(30) NOT NULL)");
 
+pg_query($db,"UPDATE Customer1 SET cus_id = 'C001' WHERE cus_name = 'Stamp' ");
 
-pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('A002','Pukky','Jungsiri','no')");
+pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C002','Pukky','Jungsiri','no')");
 $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
