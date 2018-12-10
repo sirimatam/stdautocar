@@ -72,12 +72,12 @@ if ( sizeof($request_array['events']) > 0 )
 		}
 	}
 	
-	if($check ==1)
+	/*if($check ==1)
 	{
 		$result = pg_query($db,"SELECT COUNT(*) FROM Customer");
 		$list = pg_fetch_row($result);
 		$reply_message = " result = $list[0]";
-	}
+	}*/
 	elseif($check ==2)
 	{
 		pg_query($db,"INSERT INTO Customer VALUES ('c01','Somkit')");
@@ -87,14 +87,14 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
 	}
-	elseif($text==4)
+	/*elseif($text==4)
 	{
 		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
 		$custlist ='';
 		while ($list = pg_fetch_row($result))
 		$custlist += $list
 		$reply_message = "$custlist";
-	}
+	}*/
 	
 		
 	   
