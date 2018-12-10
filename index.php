@@ -56,8 +56,7 @@ if ( sizeof($request_array['events']) > 0 )
 		{
 			$reply_message = 'Hi,what is you name';
 		}
-		else
-		$reply_message = 'why dont you say hello to me';
+	
 	}
    }
    elseif($text ==1)
