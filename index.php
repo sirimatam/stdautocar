@@ -46,34 +46,22 @@ if ( sizeof($request_array['events']) > 0 )
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	
-	$greeting = array('Hi','Hello','ดีจ้า','สวัสดี','สวัสดีครับ');
-	
-	$correct = 0;
-	foreach ($greeting as $value)
-	{
-		if ($text == $value)
-		{
-			$reply_message = 'Hi,what is you name';
-		}
-	
-	}
-   elseif($text ==1)
-   {
-	   $reply_message = 'ขณะนี้มีรถในระบบจำนวน 20 คัน';
-   }
-   elseif($text ==2)
-   {
-	   $reply_message = 'อู่ A 023333322';
-   }
-   elseif($text==3)
-   {
-	   $reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
-   }
-   elseif($text==4)
-   {
-	   $reply_message = ':)';
-   }
+	   if($text ==1)
+	   {
+		   $reply_message = 'ขณะนี้มีรถในระบบจำนวน 20 คัน';
+	   }
+	   elseif($text ==2)
+	   {
+		   $reply_message = 'อู่ A 023333322';
+	   }
+	   elseif($text==3)
+	   {
+		   $reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
+	   }
+	   elseif($text==4)
+	   {
+		   $reply_message = ':)';
+	   }
    }
    
 	  
