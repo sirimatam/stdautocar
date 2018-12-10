@@ -51,11 +51,17 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'Hi,what is you name';
 	}
-	elseif ($text==2)
+	elseif ($text=='numcust')
 	{
 		$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 		$list = pg_fetch_row($result);
 		$reply_message = " result = $list[0]";
+	}
+	elseif ($text=='showcust')
+	{
+		$result = pg_query($db,"SELECT cus_name FROM Customer1");
+		$list = pg_fetch_row($result);
+		$reply_message = "$list[0]";
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
