@@ -7,6 +7,8 @@ echo $db;
 
 
 //pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C003','AAA','ABC','no')");
+
+/*
 $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
@@ -15,7 +17,7 @@ $result = pg_query($db,"SELECT * FROM Customer1");
 while ($list = pg_fetch_row($result))
 echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
 
-/*
+
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
 gar_name varchar(40) NOT NULL),
