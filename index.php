@@ -87,7 +87,7 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
 	}
-	elseif($text==4)
+	/*elseif($text==4)
 	{
 		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
 		
@@ -97,7 +97,7 @@ if ( sizeof($request_array['events']) > 0 )
 		
 		$reply_message = "$result[0]";
 	}
-	
+	*/
 		
 	   
 	else
