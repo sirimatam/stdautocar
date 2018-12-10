@@ -41,66 +41,28 @@ if ( sizeof($request_array['events']) > 0 )
  {
   $reply_message = '';
   $reply_token = $event['replyToken'];
-if ( sizeof($request_array['events']) > 0 )
-{
- foreach ($request_array['events'] as $event)
- {
-  $reply_message = '';
-  $reply_token = $event['replyToken'];
   if ( $event['type'] == 'message' ) 
   {
    if( $event['message']['type'] == 'text' )
    {
     $text = $event['message']['text'];
-	$car = array('"1"',"1","ค้นหารถ","รถ","หารถ","ยี่ห้อรถ");
-	$tel = array("tel","เบอร์","หาเบอร์","2",'"2"',"โทร","เบอร์โทร");
-	   
-	$check = 0;
 	
-	foreach ($car as $value)
+	$greeting = array('Hi','Hello','ดีจ้า','สวัสดี','สวัสดีครับ');
+	
+	$correct = 0;
+	foreach ($greeting as $value)
 	{
-		if($text == $value)
+		if ($text == $value)
 		{
-			$check=1;
+			$correct = 1;
 		}
 	}
-	foreach ($tel as $value)
+	if ($correct == 1)
 	{
-		if($text == $value)
-		{
-			$check=2;
-		}
+		$reply_message = 'Hi,what is you name';
 	}
-	
-	if($check ==1)
-	{
-		$reply_message = 'ขณะนี้มีรถอยู่ในระบบทั้งหมด 20 คัน';
-	}
-	elseif($check ==2)
-	{
-		$reply_message = 'อู่คุณวิชัย 023334444';
-	}
-	elseif($text==3)
-	{
-		$reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
-	}
-	elseif($text==4)
-	{
-		/*
-		$cus_id_last = pg_fetch_row(pg_query($db, "SELECT Max(cus_id)"))[0];
-		
-		
-		$result = pg_query($db,"SELECT * FROM Customer1");
-		$custlist ='';
-		while ($list = pg_fetch_array($result))
-		{$custlist += $list;}
-		$reply_message = $cus_id_last;
-		*/
-		$reply_message = 'error';
-	}	
-	   
 	else
-		$reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน,พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า' ;
+	$reply_message = 'why dont you say hello to me';
    }
    else
     $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
@@ -122,9 +84,7 @@ if ( sizeof($request_array['events']) > 0 )
   }
  }
 }
-
 echo "OK";
-	 
 function send_reply_message($url, $post_header, $post_body)
 {
  $ch = curl_init($url);
