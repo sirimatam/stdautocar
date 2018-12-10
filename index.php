@@ -53,7 +53,9 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	elseif ($text==2)
 	{
-		$reply_message = "yes";
+		$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
+		$list = pg_fetch_row($result);
+		$reply_message = " result = $list[0]";
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
