@@ -68,17 +68,6 @@ if ( sizeof($request_array['events']) > 0 )
 	   }
 	   else
     	    $reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน, พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า';
-           if(check==1)
-	   {
-		$result = pg_query($db,"SELECT cus_name FROM Customer1");
-		while ($list = pg_fetch_row($result))
-		{
-			$cust = $list[0]."/r/n";
-			$custlist .= $cust;
-		}
-		$reply_message = "$custlist";
-
-	   }
 	   
    }	   
    else
@@ -88,6 +77,17 @@ if ( sizeof($request_array['events']) > 0 )
   else
    $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
  
+if(check==1)
+	   {
+		$result = pg_query($db,"SELECT cus_name FROM Customer1");
+		while ($list = pg_fetch_row($result))
+		{
+			$cust = $list[0]."/r/n";
+			$custlist .= $cust;
+		}
+		$reply_message = "$custlist";
+
+	   }	 
   if( strlen($reply_message) > 0 )
   {
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
