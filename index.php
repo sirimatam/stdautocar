@@ -77,7 +77,7 @@ if ( sizeof($request_array['events']) > 0 )
 			$cust = $list[0]."\n";
 			$custlist .= $cust;
 		}
-		$reply_message = "$custlist";
+		$reply_message = "$custlist".$cardata[1];
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
