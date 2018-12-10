@@ -45,6 +45,7 @@ if ( sizeof($request_array['events']) > 0 )
   {
    if( $event['message']['type'] == 'text' )
    {
+    $check =0;
     $text = $event['message']['text'];
 	   if($text ==1)
 	   {
@@ -63,10 +64,22 @@ if ( sizeof($request_array['events']) > 0 )
 		   $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 		   $list = pg_fetch_row($result);
 		   $reply_message = "ขณะนี้มีลูกค้าทั้งหมด ".$list[0]." คน ในระบบ";
-		   $reply_message = "55555";
+		   $check =1;
 	   }
 	   else
     	    $reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน, พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า';
+           if(check==1)
+	   {
+		$result = pg_query($db,"SELECT cus_name FROM Customer1");
+		while ($list = pg_fetch_row($result))
+		{
+			$cust = $list[0]."/r/n";
+			$custlist .= $cust;
+		}
+		$reply_message = "$custlist";
+
+	   }
+	   
    }	   
    else
     $reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน, พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า';
