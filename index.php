@@ -13,7 +13,7 @@ echo  "result = $list[0] <br>";
 
 $result = pg_query($db,"SELECT * FROM Customer1");
 while ($list = pg_fetch_row($result))
-echo  "result = $list[0]." ".$list[1]." ".$list[2]." ".$list[3]<br>";
+echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
 
 /*
 pg_query($db,"CREATE TABLE Garage (
@@ -54,6 +54,7 @@ if ( sizeof($request_array['events']) > 0 )
     $text = $event['message']['text'];
 	$car = array('"1"',"1","ค้นหารถ","รถ","หารถ","ยี่ห้อรถ");
 	$tel = array("tel","เบอร์","หาเบอร์","2",'"2"',"โทร","เบอร์โทร");
+	   
 	$check = 0;
 	
 	foreach ($car as $value)
@@ -86,11 +87,22 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
 	}
+	   elseif($text==4)
+	{
+		$result = pg_query($db,"SELECT * FROM Customer1");
+		$custlist = '';
+
+		while ($list = pg_fetch_row($result))
+		   $cust = $list[0].$list[1].$list[2].$list[3].'//';
+		   $custlist = $cuslist+$cust;
+		
+		$reply_message = $custlist;
+	}
 	
 		
 	   
 	else
-		$reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน';
+		$reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน,พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า' ;
    }
    else
     $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
