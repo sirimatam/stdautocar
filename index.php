@@ -67,17 +67,18 @@ if ( sizeof($request_array['events']) > 0 )
 		}
 		$reply_message = "$custlist";
 	}
-	elseif (substr($text,0,6) =='addcar')
+	elseif (substr($text,0,6) =='addcus')
 	{
-		$cardata = explode(" ",$text);
-		pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ($cardata[1],$cardata[2],$cardata[3],$cardata[4])");
+		list($order, $cusid, $cusname, $cuslast, $cuspic) = split(" ", $text, 5);
+		//$cardata = explode(" ",$text);
+		pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ($cusid,$cusname,$cuslast,$cuspic)");
 		$result = pg_query($db,"SELECT cus_name FROM Customer1");
 		while ($list = pg_fetch_row($result))
 		{
 			$cust = $list[0]."\n";
 			$custlist .= $cust;
 		}
-		$reply_message = "$custlist".$cardata[1];
+		$reply_message = "$custlist"."$cardata[1]";
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
