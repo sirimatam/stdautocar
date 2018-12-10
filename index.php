@@ -53,13 +53,7 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	elseif ($text==2)
 	{
-		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
-		$custlist ='';
-		while ($list = pg_fetch_row($result))
-		{
-			$custlist += $list
-		}
-		$reply_message = "$custlist";
+		$reply_message = "yes";
 	}
 	else
 	$reply_message = 'why dont you say hello to me';
