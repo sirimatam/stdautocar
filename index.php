@@ -89,14 +89,15 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	   elseif($text==4)
 	{
-		$result = pg_query($db,"SELECT * FROM Customer1");
+		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
 		$custlist = '';
-
-		while ($list = pg_fetch_row($result))
-		{ $cust = $list[0].$list[1].$list[2].$list[3].'//';
-		   $custlist = $cuslist+$cust;}
 		
-		$reply_message = $custlist;
+
+		//while ($list = pg_fetch_row($result))
+		//{ $cust = $list[0].$list[1].$list[2].$list[3].'//';
+		  // $custlist = $cuslist+$cust;}
+		
+		$reply_message = $result[0];
 	}
 	
 		
