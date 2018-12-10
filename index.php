@@ -12,6 +12,10 @@ $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
 
+$result = pg_query($db,"SELECT * FROM Customer1");
+while ($list = pg_fetch_row($result))
+echo  "result = $list<br>";
+
 /*
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
