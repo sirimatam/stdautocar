@@ -14,7 +14,7 @@ gar_tel varchar(10) NOT NULL");
 
 $result = pg_query($db,"SELECT * FROM Garage");
 $list = pg_fetch_row($result);
-echo "result = $list[0]." ".$list[1]." ".list[2]";
+echo "result = $list[0]";
 
 
 
