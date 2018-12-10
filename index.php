@@ -1,5 +1,7 @@
 <?php
 
+$db = pg_connect("host=ec2-54-235-193-0.compute-1.amazonaws.com port=5432 dbname=d6ccd2htpr3a7o user=hiaucjuwlowgrh password=2df3a048937c2f6a07847fb6816bf88582290e8249eac587eaf1c5b29e29998a");
+echo $db;
 
 
 $API_URL = 'https://api.line.me/v2/bot/message/reply';
