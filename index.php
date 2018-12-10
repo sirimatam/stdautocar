@@ -60,7 +60,9 @@ if ( sizeof($request_array['events']) > 0 )
 	   }
 	   elseif($text==4)
 	   {
-		   $reply_message = ':)';
+		   $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
+		   $list = pg_fetch_row($result);
+		   $reply_message = 'ขณะนี้มีลูกค้าทั้งหมด $list[0] คน ในระบบ'
 	   }
 	   else
     	    $reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน, พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า';
