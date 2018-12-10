@@ -10,7 +10,7 @@ gar_name varchar(40) NOT NULL),
 gar_tel varchar(10) NOT NULL");
 */
 
-pg_query($db,"INSERT INTO Garage VALUES ('g01','อู่คุณ A','0812223333'));
+pg_query($db,"INSERT INTO Garage VALUES ('g01','อู่คุณ A','0812223333')");
 
 $result = pg_query($db,"SELECT * FROM Garage");
 $list = pg_fetch_row($result);
