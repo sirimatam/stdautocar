@@ -62,7 +62,7 @@ if ( sizeof($request_array['events']) > 0 )
 		$result = pg_query($db,"SELECT cus_name FROM Customer1");
 		while ($list = pg_fetch_row($result))
 		{
-			$cust = $list[0]."/r/n";
+			$cust = $list[0]."\n";
 			$custlist .= $cust;
 		}
 		$reply_message = "$custlist";
