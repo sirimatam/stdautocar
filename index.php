@@ -6,7 +6,7 @@ echo $db;
 //pg_query($db,"CREATE TABLE Customer1 (cus_id varchar(5) NOT NULL PRIMARY KEY, cus_name varchar(30) NOT NULL, cus_lastname varchar(30) NOT NULL, cus_pic varchar(30) NOT NULL)");
 
 
-pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C003','AAA','ABC','no')");
+//pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C003','AAA','ABC','no')");
 $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
@@ -90,12 +90,10 @@ if ( sizeof($request_array['events']) > 0 )
 	elseif($text==4)
 	{
 		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
-		
-		//while ($list = pg_fetch_row($result))
-		//{ $cust = $list[0].$list[1].$list[2].$list[3].'//';
-		  // $custlist = $cuslist+$cust;}
-		$list = pg_fetch_row($result)
-		$reply_message = "$list[0]";
+		$custlist ='';
+		while ($list = pg_fetch_row($result))
+		$custlist += $list
+		$reply_message = "$custlist";
 	}
 	
 		
