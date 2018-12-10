@@ -63,7 +63,7 @@ if ( sizeof($request_array['events']) > 0 )
 		while ($list = pg_fetch_row($result))
 		{
 			$cust = $list[0]."//";
-			$custlist += $cust;
+			$custlist .= $cust;
 		}
 		$reply_message = "$custlist";
 	}
