@@ -16,15 +16,15 @@ pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
 gar_name varchar(40) NOT NULL),
 gar_tel varchar(10) NOT NULL");
-*/
 
-//pg_query($db,"INSERT INTO Garage VALUES ('g01','อู่คุณ A','0812223333')");
+
+pg_query($db,"INSERT INTO Garage VALUES ('g01','อู่คุณ A','0812223333')");
 
 $result = pg_query($db,"SELECT * FROM Garage");
 $list = pg_fetch_row($result);
 echo "result = $list[0]";
 
-
+*/
 
 $API_URL = 'https://api.line.me/v2/bot/message/reply';
 $ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5NzlLRmgGiFA2sTLoxwN5PVxXN2QMwMf3Y45fLcYsi6wI2Sw7BoqUzGU4kCU6I9NJwsVlnibO8YL6Id1U9rHEkowdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
