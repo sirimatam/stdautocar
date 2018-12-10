@@ -7,7 +7,7 @@ echo $db;
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
 gar_name varchar(40) NOT NULL),
-gar_tel varchar(10) NOT NULL
+gar_tel varchar(10) NOT NULL,
 PRIMARY KEY(gar_id)");
 
 pg_query($db,"INSERT INTO Garage VALUES ('g01','อู่คุณ A','0812223333'),
