@@ -89,16 +89,14 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'บัญชีประจำเดือน ธันวาคม 2561, ค่าใช้จ่าย 3,000 บาท, เงินสดหมุนเวียน 400,000 บาท ต้องการเพิ่มข้อมูล กด "4"';
 	}
-	/*elseif($text==4)
+	elseif($text==4)
 	{
-		$result = pg_query($db,"SELECT Customer1.cus_name FROM Customer1");
+		$result = pg_query($db,"SELECT * FROM Customer1");
 		$custlist ='';
-		while ($list = pg_fetch_row($result))
-		$custlist += $list
+		while ($list = pg_fetch_array($result))
+		{$custlist += $list;}
 		$reply_message = "$custlist";
-	}
-	
-	*/	
+	}	
 	   
 	else
 		$reply_message = 'พิมพ์ "1" เมื่อต้องการค้นหารถ, พิมพ์ "2" เมื่อต้องการค้นหาเบอร์ติดต่อของบริษัท, พิมพ์ "3" เมื่อต้องการตรวจสอบการเงิน,พิมพ์ "4" เมื่อต้องการเรียกดูข้อมูลลูกค้า' ;
