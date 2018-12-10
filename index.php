@@ -6,7 +6,7 @@ echo $db;
 pg_query($db,"CREATE TABLE Customer1 (cus_id varchar(5) NOT NULL PRIMARY KEY, cus_name varchar(30) NOT NULL, cus_lastname varchar(30) NOT NULL, cus_pic varchar(30) NOT NULL)");
 
 
-pg_query($db,"INSERT INTO Customer (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('A001','Stamp','Bor','no')");
+pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('A001','Stamp','Bor','no')");
 $result = pg_query($db,"SELECT COUNT(*) FROM Customer");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
