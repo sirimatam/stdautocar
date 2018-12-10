@@ -3,6 +3,14 @@
 $db = pg_connect("host=ec2-54-235-193-0.compute-1.amazonaws.com port=5432 dbname=d6ccd2htpr3a7o user=hiaucjuwlowgrh password=2df3a048937c2f6a07847fb6816bf88582290e8249eac587eaf1c5b29e29998a");
 echo $db;
 
+pg_query($db,"CREATE TABLE Customer (cus_id vachar(5) NOT NULL PRIMARY KEY, cus_name vachar(30) NOT NULL, cus_lastname vachar(30) NOT NULL, cus_pic vachar(30) NOT NULL)");
+
+
+pg_query($db,"INSERT INTO Customer ('cus_id','cus_name','cus_lastname','cus_pic') VALUES ('A001','Stamp','Bor','no')");
+$result = pg_query($db,"SELECT COUNT(*) FROM Customer");
+$list = pg_fetch_row($result);
+echo  "result = $list[0] <br>";
+
 /*
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
