@@ -55,12 +55,7 @@ if ( sizeof($request_array['events']) > 0 )
 	}
 	elseif ($text=='button')
 	{
-		$data = ['replyToken' => $reply_token,
-		
-			 'messages' => [['type' => 'flex', 'contents' => [['type' => 'bubble','body'=>[['type'=>'box','layout'=>'vertical','contents'=>[['type'=>'button','style'=>'primary','height'=>'sm','action'=>[['type'=>'uri','label'=>'add','uri'=>'https://developers.line.me']]]]]]]]]]];
-                $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-		$send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
-   		echo "Result: ".$send_result."\r\n";
+		$reply_message = "1";
 
 	}
 	
@@ -107,7 +102,18 @@ if ( sizeof($request_array['events']) > 0 )
  
   if( strlen($reply_message) > 0 )
   {
+   if($reply_message == '1')
+   {
+   $data = ['replyToken' => $reply_token,
+		
+	    'messages' => [['type' => 'flex', 'contents' => ['type' => 'bubble','body'=>['type'=>'box','layout'=>'vertical','contents'=>['type'=>'button','style'=>'primary','height'=>'sm','action'=>['type'=>'uri','label'=>'add','uri'=>'https://developers.line.me']]]]]]];
+   $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+   $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
+   echo "Result: ".$send_result."\r\n";
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
+   }
+   else
+   {
    $data = [
     'replyToken' => $reply_token,
     'messages' => [['type' => 'text', 'text' => $reply_message]]
@@ -115,6 +121,7 @@ if ( sizeof($request_array['events']) > 0 )
    $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
    echo "Result: ".$send_result."\r\n";
+   }
   }
  }
 }
