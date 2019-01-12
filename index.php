@@ -53,38 +53,7 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'Hi,what is you name';
 	}
-	elseif ($text=='button')
-	{
-		//$data = ['replyToken' => $reply_token,'messages' => [['type' => 'carousel', 'text' => $reply_message]]];
-                $post_body = {
- "messages": [
-  {
-   "type": "flex",
-   "altText": "This is a Flex Message",
-   "contents": {
-    "type": "bubble",
-    "body": {
-     "type": "box",
-     "layout": "vertical",
-     "contents": [
-      {
-       "type": "button",
-       "style": "primary",
-       "height": "sm",
-       "action": {
-        "type": "uri",
-        "label": "Add to Cart",
-        "uri": "https://developers.line.me"
-       }
-      }
-     ]
-    }
-   }
-  }
- ]
-};
-
-	}
+	
 	elseif ($text=='numcust')
 	{
 		$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
