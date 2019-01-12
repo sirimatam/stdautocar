@@ -82,7 +82,7 @@ if ( sizeof($request_array['events']) > 0 )
    }
   }
  ]
-}
+};
 
 	}
 	elseif ($text=='numcust')
