@@ -82,22 +82,32 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		//$data = ['replyToken' => $reply_token,'messages' => [['type' => 'carousel', 'text' => $reply_message]]];
                 $post_body = {
-    "type": "carousel",
-    "contents":[
-        {
-            "type": "bubble",
-            "styles": {},
-            "body": {},
-            "footer": {}
-        },
-        {
-            "type": "bubble",
-            "styles": {},
-            "body": {},
-            "footer": {}
-        }
-    ]
-};
+ "messages": [
+  {
+   "type": "flex",
+   "altText": "This is a Flex Message",
+   "contents": {
+    "type": "bubble",
+    "body": {
+     "type": "box",
+     "layout": "vertical",
+     "contents": [
+      {
+       "type": "button",
+       "style": "primary",
+       "height": "sm",
+       "action": {
+        "type": "uri",
+        "label": "Add to Cart",
+        "uri": "https://developers.line.me"
+       }
+      }
+     ]
+    }
+   }
+  }
+ ]
+}
 
 	}
 	elseif ($text=='numcust')
