@@ -104,14 +104,10 @@ if ( sizeof($request_array['events']) > 0 )
   {
    if($reply_message == '1')
    {
-   /*$data = ['replyToken' => $reply_token,
+   $data = ['replyToken' => $reply_token,
 		
-	    'messages' => [['type' => 'flex', 'contents' => ['type' => 'bubble','body'=>['type'=>'box','layout'=>'vertical','contents'=>['type'=>'button','style'=>'primary','height'=>'sm','action'=>['type'=>'uri','label'=>'add','uri'=>'https://developers.line.me']]]]]]];
-   */
-    $data = [
-    'replyToken' => $reply_token,
-    'messages' => [['type' => 'text', 'text' => "hello"]]
-   ];
+	    'messages' => [['type' => 'flex', 'contents' => ['type' => 'bubble', 'body' => ['type' => 'box', 'layout' => 'vertical', 'contents' => ['type' => 'button', 'style' => 'primary', 'height' => 'sm', 'action' => ['type' => 'uri', 'label' => 'add', 'uri' => "https://developers.line.me"]]]]]]];
+  
    $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
    echo "Result: ".$send_result."\r\n";
