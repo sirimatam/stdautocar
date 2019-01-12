@@ -25,6 +25,36 @@ $ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
+
+{
+ "to": $ACCESS_TOKEN,
+ "messages": [
+  {
+   "type": "flex",
+   "altText": "This is a Flex Message",
+   "contents": {
+    "type": "bubble",
+    "body": {
+     "type": "box",
+     "layout": "vertical",
+     "contents": [
+      {
+       "type": "button",
+       "style": "primary",
+       "height": "sm",
+       "action": {
+        "type": "uri",
+        "label": "Add to Cart",
+        "uri": "https://developers.line.me"
+       }
+      }
+     ]
+    }
+   }
+  }
+ ]
+}
+
 if ( sizeof($request_array['events']) > 0 )
 {
  foreach ($request_array['events'] as $event)
