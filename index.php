@@ -78,6 +78,28 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'Hi,what is you name';
 	}
+	elseif ($text=='button')
+	{
+		//$data = ['replyToken' => $reply_token,'messages' => [['type' => 'carousel', 'text' => $reply_message]]];
+                $post_body = {
+    "type": "carousel",
+    "contents":[
+        {
+            "type": "bubble",
+            "styles": {},
+            "body": {},
+            "footer": {}
+        },
+        {
+            "type": "bubble",
+            "styles": {},
+            "body": {},
+            "footer": {}
+        }
+    ]
+};
+
+	}
 	elseif ($text=='numcust')
 	{
 		$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
@@ -116,6 +138,8 @@ if ( sizeof($request_array['events']) > 0 )
   }
   else
    $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
+ 
+	 
  
   if( strlen($reply_message) > 0 )
   {
