@@ -53,6 +53,14 @@ if ( sizeof($request_array['events']) > 0 )
 	{
 		$reply_message = 'Hi,what is you name';
 	}
+	elseif ($text=='button')
+	{
+		$data = ['replyToken' => $reply_token,
+		
+			 'messages' => [['type' => 'flex', 'contents' => ['type' => 'bubble','body'=>['type'=>'box','layout'=>'vertical','contents'=>['type'=>'button','style'=>'primary','height'=>'sm','action'=>['type'=>'uri','label'=>'add','uri'=>'https://developers.line.me']]]]]]];
+                $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+	}
 	
 	elseif ($text=='numcust')
 	{
