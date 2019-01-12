@@ -105,7 +105,7 @@ if ( sizeof($request_array['events']) > 0 )
    if($reply_message == '1')
    {
    $data = ['replyToken' => $reply_token,
-	    'altText' => "Flex message',
+	    'altText' => "This is Flex message",
 	    'messages' => [['type' => 'flex', 'contents' => ['type' => 'bubble', 'body' => ['type' => 'box', 'layout' => 'vertical', 'contents' => ['type' => 'button', 'style' => 'primary', 'height' => 'sm', 'action' => ['type' => 'uri', 'label' => 'add', 'uri' => "https://developers.line.me"]]]]]]];
   
    $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
