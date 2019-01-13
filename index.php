@@ -110,7 +110,7 @@ if ( sizeof($request_array['events']) > 0 )
 //	    'messages' => [['type' => 'flex', 'contents' => [['type' => 'bubble', 'body' => [['type' => 'box', 'layout' => 'vertical', 'contents' => [['type' => 'button', 'style' => 'primary', 'height' => 'sm', 'action' => [['type' => 'uri', 'label' => 'add', 'uri' => "https://developers.line.me"]]]]]]]]]]];
    $data = ['replyToken' => $reply_token,'type' => 'template', 'altText' => 'this is a button template', 'template' => ['type' => 'buttons', 'actions' => ['type'=> 'message', 'label' => 'Action1' , 'text' => 'click success ka'],'thumbnailImageUrl' => 'http://images6.fanpop.com/image/photos/38600000/Adventure-Time-cartoon-network-38672283-1600-900.jpg', 'title' => 'car', 'text' => 'mini']];
    
-   $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+   $post_body = json_encode($data);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
    echo "Result: ".$send_result."\r\n";
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
@@ -136,7 +136,7 @@ function send_reply_message($url, $post_header, $post_body)
  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
  curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
  curl_setopt($ch, CURLOPT_POSTFIELDS, $post_body);
- curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
  $result = curl_exec($ch);
  curl_close($ch);
  return $result;
