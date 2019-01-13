@@ -105,10 +105,10 @@ if ( sizeof($request_array['events']) > 0 )
   {
    if($reply_message == '1')
    {
-   //$data = ['replyToken' => $reply_token,
-//	    'altText' => "This is Flex message",
-//	    'messages' => [['type' => 'flex', 'contents' => [['type' => 'bubble', 'body' => [['type' => 'box', 'layout' => 'vertical', 'contents' => [['type' => 'button', 'style' => 'primary', 'height' => 'sm', 'action' => [['type' => 'uri', 'label' => 'add', 'uri' => "https://developers.line.me"]]]]]]]]]]];
-   $data = ['type' => 'template', 'altText' => 'this is a button template', 'template' => array('type' => 'buttons', 'actions' => array('type'=> 'message', 'label' => 'Action1' , 'text' => 'click success ka'),'thumbnailImageUrl' => 'http://images6.fanpop.com/image/photos/38600000/Adventure-Time-cartoon-network-38672283-1600-900.jpg', 'title' => 'car', 'text' => 'mini')];
+   $data = ['replyToken' => $reply_token,
+	    'altText' => "This is Flex message",
+	    'messages' => array('type' => 'flex', 'contents' => array('type' => 'bubble', 'body' => array('type' => 'box', 'layout' => 'vertical', 'contents' => array('type' => 'button', 'style' => 'primary', 'height' => 'sm', 'action' => array('type' => 'uri', 'label' => 'add', 'uri' => "https://developers.line.me")))))];
+   //$data = ['type' => 'template', 'altText' => 'this is a button template', 'template' => array('type' => 'buttons', 'actions' => array('type'=> 'message', 'label' => 'Action1' , 'text' => 'click success ka'),'thumbnailImageUrl' => 'http://images6.fanpop.com/image/photos/38600000/Adventure-Time-cartoon-network-38672283-1600-900.jpg', 'title' => 'car', 'text' => 'mini')];
    
    $post_body = json_encode($data);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
