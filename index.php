@@ -110,7 +110,7 @@ if ( sizeof($request_array['events']) > 0 )
   // $data = ['type' => 'template', 'altText' => 'this is a button template', 'template' => array('type' => 'buttons', 'actions' => array('type'=> 'message', 'label' => 'Action1' , 'text' => 'click success ka'),'thumbnailImageUrl' => 'http://images6.fanpop.com/image/photos/38600000/Adventure-Time-cartoon-network-38672283-1600-900.jpg', 'title' => 'car', 'text' => 'mini')];
   $data = [
 	'replyToken' => $reply_token,
-	'message' => [
+	'messages' => [
 		'type' => 'flex', 
 		'contents' => [
 			'type' => 'bubble',
@@ -122,7 +122,7 @@ if ( sizeof($request_array['events']) > 0 )
 						'type' => 'button',
 						'style' => 'primary',
 						'height' => 'sm',
-						'action' => [
+						'actions' => [
 							'type' => 'uri',
 							'label' => 'add',
 							'uri' => "https://developers.line.me"
