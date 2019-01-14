@@ -112,8 +112,8 @@ if ( sizeof($request_array['events']) > 0 )
 	'replyToken' => $reply_token,
 	'messages' => [
 		[
-			'type' => 'flex',
-			'altText' => 'This is Flex Message.'
+			'type' => 'flex', 
+			'altText' => "This is flex message",
 			'contents' => [
 				'type' => 'bubble',
 				'body' => [
@@ -136,7 +136,6 @@ if ( sizeof($request_array['events']) > 0 )
 		]
 	]
 ];
-
    $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
    file_put_contents("php://stderr", "POST REQUEST =====> ".$post_body);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
