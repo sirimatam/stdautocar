@@ -20,7 +20,7 @@ $result = pg_query($db,"SELECT * FROM Garage");
 $list = pg_fetch_row($result);
 echo "result = $list[0]";
 */
-$API_URL = 'https://api.line.me/v2/bot/message/reply';
+$API_URL = 'https://api.line.me/v2/bot/message/push';
 $ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5NzlLRmgGiFA2sTLoxwN5PVxXN2QMwMf3Y45fLcYsi6wI2Sw7BoqUzGU4kCU6I9NJwsVlnibO8YL6Id1U9rHEkowdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $request = file_get_contents('php://input');   // Get request content
