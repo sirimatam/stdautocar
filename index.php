@@ -137,7 +137,7 @@ if ( sizeof($request_array['events']) > 0 )
    
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
    echo "Result: ".$send_result."\r\n";
-   
+   file_put_contents("php://stderr", "POST RESULT =====> ".$send_result);
 
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
    }
