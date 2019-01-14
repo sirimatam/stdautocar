@@ -122,7 +122,7 @@ if ( sizeof($request_array['events']) > 0 )
 						'type' => 'button',
 						'style' => 'primary',
 						'height' => 'sm',
-						'action' => [
+						'actions' => [
 							'type' => 'uri',
 							'label' => 'add',
 							'uri' => "https://developers.line.me"
