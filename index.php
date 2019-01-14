@@ -32,7 +32,6 @@ if ( sizeof($request_array['events']) > 0 )
  foreach ($request_array['events'] as $event)
  {
   $reply_message = '';
-  $x ='';
   $reply_token = $event['replyToken'];
   if ( $event['type'] == 'message' ) 
   {
@@ -137,7 +136,7 @@ if ( sizeof($request_array['events']) > 0 )
 		]
 	]
 ];
-   $post_body = json_encode($data);
+   $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
    $send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
    echo "Result: ".$send_result."\r\n";
    //$reply_message = iconv("tis-620","utf-8",$reply_message);
