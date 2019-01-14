@@ -20,7 +20,7 @@ $result = pg_query($db,"SELECT * FROM Garage");
 $list = pg_fetch_row($result);
 echo "result = $list[0]";
 */
-$API_URL = 'https://api.line.me/v2/bot/message/push';
+$API_URL = 'https://api.line.me/v2/bot/message/reply';
 $ACCESS_TOKEN = 'L0246N0Dd1KuwHuzqr88jOCehjzvrytHUf+Yrdq5cD6omLdxDQGGFcvQBIMemj5NzlLRmgGiFA2sTLoxwN5PVxXN2QMwMf3Y45fLcYsi6wI2Sw7BoqUzGU4kCU6I9NJwsVlnibO8YL6Id1U9rHEkowdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $request = file_get_contents('php://input');   // Get request content
@@ -110,25 +110,22 @@ if ( sizeof($request_array['events']) > 0 )
   // $data = ['type' => 'template', 'altText' => 'this is a button template', 'template' => array('type' => 'buttons', 'actions' => array('type'=> 'message', 'label' => 'Action1' , 'text' => 'click success ka'),'thumbnailImageUrl' => 'http://images6.fanpop.com/image/photos/38600000/Adventure-Time-cartoon-network-38672283-1600-900.jpg', 'title' => 'car', 'text' => 'mini')];
    $data = [
 	'replyToken' => $reply_token,
-	'altText' => "This is Flex message",
 	'messages' => [
-		[
-			'type' => 'flex', 
-			'contents' => [
-				'type' => 'bubble',
-				'body' => [
-					'type' => 'box',
-					'layout' => 'vertical',
-					'contents' => [
-						[
-							'type' => 'button',
-							'style' => 'primary',
-							'height' => 'sm',
-							'action' => [
-								'type' => 'uri',
-								'label' => 'add',
-								'uri' => "https://developers.line.me"
-							]
+		'type' => 'flex', 
+		'contents' => [
+			'type' => 'bubble',
+			'body' => [
+				'type' => 'box',
+				'layout' => 'vertical',
+				'contents' => [
+					[
+						'type' => 'button',
+						'style' => 'primary',
+						'height' => 'sm',
+						'action' => [
+							'type' => 'uri',
+							'label' => 'add',
+							'uri' => "https://developers.line.me"
 						]
 					]
 				]
