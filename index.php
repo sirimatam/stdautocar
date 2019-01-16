@@ -126,7 +126,7 @@ if ( sizeof($request_array['events']) > 0 )
 						[
 							'type' => 'text',
 							'text' => 'first bubble',
-							'wrap' => 'true',
+							'wrap' => true,
 						]
 						]
 					   ],
@@ -157,7 +157,7 @@ if ( sizeof($request_array['events']) > 0 )
 						[
 							'type' => 'text',
 							'text' => 'second bubble',
-							'wrap' => 'true',
+							'wrap' => true,
 						]
 						]
 					   ],
