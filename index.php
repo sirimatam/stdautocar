@@ -112,26 +112,71 @@ if ( sizeof($request_array['events']) > 0 )
 	'replyToken' => $reply_token,
 	'messages' => [
 		[
-			'type' => 'flex', 
-			'altText' => "This is flex message",
+			'type' => 'carousel', 
+			
 			'contents' => [
+				[
 				'type' => 'bubble',
 				'body' => [
 					'type' => 'box',
-					'layout' => 'vertical',
+					'layout' => 'horizontal',
+					'contents' => [
+						[
+							'type' => 'text',
+							'text' => 'show all car',
+							'wrap' => 'true',
+						]
+						]
+					   ],
+				'footer' => [
+					'type' => 'box',
+					'layout' => 'horizontal',
+				
 					'contents' => [
 						[
 							'type' => 'button',
 							'style' => 'primary',
-							'height' => 'sm',
+							
 							'action' => [
 								'type' => 'uri',
-								'label' => 'add',
+								'label' => 'Go',
 								'uri' => "https://developers.line.me"
 							]
 						]
 					]
 				]
+			],
+				[
+				'type' => 'bubble',
+				'body' => [
+					'type' => 'box',
+					'layout' => 'horizontal',
+					'contents' => [
+						[
+							'type' => 'text',
+							'text' => 'hello',
+							'wrap' => 'true',
+						]
+						]
+					   ],
+				'footer' => [
+					'type' => 'box',
+					'layout' => 'horizontal',
+				
+					'contents' => [
+						[
+							'type' => 'button',
+							'style' => 'primary',
+							
+							'action' => [
+								'type' => 'uri',
+								'label' => 'Go',
+								'uri' => "https://developers.line.me"
+							]
+						]
+					]
+				]
+			]
 			]
 		]
 	]
