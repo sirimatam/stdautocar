@@ -113,7 +113,7 @@ if ( sizeof($request_array['events']) > 0 )
 	'messages' => [
 		[
 			'type' => 'carousel', 
-			
+			'altText' => 'This is carousel',
 			'contents' => [
 				[
 				'type' => 'bubble',
