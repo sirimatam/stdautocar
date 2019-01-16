@@ -112,9 +112,11 @@ if ( sizeof($request_array['events']) > 0 )
 	'replyToken' => $reply_token,
 	'messages' => [
 		[
-			'type' => 'carousel', 
-			'altText' => 'This is carousel',
+			'type' => 'flex', 
+			'altText' => 'This is flex message',
 			'contents' => [
+				'type' => 'carousel',
+				'contents' => [
 				[
 				'type' => 'bubble',
 				'body' => [
@@ -123,7 +125,7 @@ if ( sizeof($request_array['events']) > 0 )
 					'contents' => [
 						[
 							'type' => 'text',
-							'text' => 'show all car',
+							'text' => 'first bubble',
 							'wrap' => 'true',
 						]
 						]
@@ -154,7 +156,7 @@ if ( sizeof($request_array['events']) > 0 )
 					'contents' => [
 						[
 							'type' => 'text',
-							'text' => 'hello',
+							'text' => 'second bubble',
 							'wrap' => 'true',
 						]
 						]
@@ -178,6 +180,7 @@ if ( sizeof($request_array['events']) > 0 )
 				]
 			]
 			]
+		]
 		]
 	]
 ];
