@@ -95,7 +95,17 @@ if ( sizeof($request_array['events']) > 0 )
     $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
   
   }
-  else
+  elseif ($event['type'] == 'postback')
+  {
+   $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
+   if ($event['postback']['data'] == 'data')
+   {
+	   $reply_message = 'ok ka';
+   }
+  }
+   
+   
+  else 
    $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
  
 	 
@@ -140,9 +150,10 @@ if ( sizeof($request_array['events']) > 0 )
 							'style' => 'primary',
 							
 							'action' => [
-								'type' => 'uri',
+								'type' => 'postback',
 								'label' => 'Go',
-								'uri' => "https://developers.line.me"
+								'text' => 'Go',
+								'data' => 'test'
 							]
 						]
 					]
