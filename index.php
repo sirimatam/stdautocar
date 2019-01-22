@@ -97,8 +97,8 @@ if ( sizeof($request_array['events']) > 0 )
   }
   elseif ($event['type'] == 'postback')
   {
-   $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
-   if ($event['postback']['data'] == 'data')
+   //$reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
+   if ($event['postback']['data'] == 'test')
    {
 	   $reply_message = 'ok ka';
    }
