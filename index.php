@@ -10,8 +10,8 @@ echo  "result = $list[0] <br>";
 $result = pg_query($db,"SELECT * FROM Customer1");
 $x = pg_fetch_row($result);
 echo $x;
-while ($list = pg_fetch_row($result))
-echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
+//while ($list = pg_fetch_row($result))
+//echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
 /*
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
