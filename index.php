@@ -8,6 +8,7 @@ $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 $list = pg_fetch_row($result);
 echo  "result = $list[0] <br>";
 $result = pg_query($db,"SELECT * FROM Customer1");
+$x = pg_fetch_result($result);
 while ($list = pg_fetch_row($result))
 echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
 /*
