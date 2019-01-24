@@ -5,10 +5,10 @@ echo $db;
 pg_query($db,"UPDATE Customer1 SET cus_id = 'C001' WHERE cus_name = 'Stamp' ");
 pg_query($db,"INSERT INTO Customer1 (cus_id,cus_name,cus_lastname,cus_pic) VALUES ('C002','Pukky','Jungsiri','no')");
 $result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
-$list = pg_fetch_result($result);
-echo  "result = $list <br>";
+$list = pg_fetch_row($result);
+echo  "result = $list[0] <br>";
 $result = pg_query($db,"SELECT cus_id FROM Customer1");
-$x = pg_fetch_result($result);
+$x = pg_fetch_row($result);
 echo $x[0].$x[1];
 //while ($list = pg_fetch_row($result))
 //echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
@@ -63,9 +63,10 @@ if ( sizeof($request_array['events']) > 0 )
 	
 	elseif ($text=='numcust')
 	{
-		$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
-		$list = pg_fetch_row($result);
-		$reply_message = " result = $list[0]";
+		//$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
+		//$list = pg_fetch_row($result);
+		//$reply_message = " result = $list[0]";
+		$reply_message = date("h:i:sa");
 	}
 	elseif ($text=='showcust')
 	{
