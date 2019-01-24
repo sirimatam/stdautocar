@@ -17,7 +17,7 @@ while ($list = pg_fetch_row($result))
 	$xxx += $list[0];
 	
 }
-echo $xxx[1][1];
+echo "result = $xxx[0][0] <br>";
 /*
 pg_query($db,"CREATE TABLE Garage (
 gar_id varchar(10) NOT NULL,
