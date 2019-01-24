@@ -13,8 +13,8 @@ $result = pg_query($db,"SELECT cus_id FROM Customer1");
 $xxx = array();
 while ($list = pg_fetch_row($result))
 {
-	echo  "result = $list[0].$list[1].$list[2].$list[3]<br>";
-	$xxx += $list;
+	echo  "result = $list[0]<br>";
+	$xxx += $list[0];
 	
 }
 echo $xxx[1][1];
