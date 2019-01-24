@@ -66,6 +66,7 @@ if ( sizeof($request_array['events']) > 0 )
 		//$result = pg_query($db,"SELECT COUNT(*) FROM Customer1");
 		//$list = pg_fetch_row($result);
 		//$reply_message = " result = $list[0]";
+		date_default_timezone_set("Asia/Bangkok");
 		$reply_message = date("h:i:sa");
 	}
 	elseif ($text=='showcust')
