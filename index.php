@@ -14,7 +14,7 @@ $xxx = array();
 while ($list = pg_fetch_row($result))
 {
 	echo  "result = $list[0]<br>";
-	$xxx += $list[0];
+	$xxx[0] += $list[0];
 	
 }
 echo "result = $xxx[0] <br>";
