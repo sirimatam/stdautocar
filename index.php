@@ -31,20 +31,41 @@ include("navbar.php");
 
 </head>
 <body>
-<br><br>
-<p><center><a href='show_product.php'><input type='button' value='show/edit product'></a></center></p><br><br><br>
-<p><center><a href='add_product.php'><input type='button' value='add product'></a></center></p><br><br><br>
+	
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-<p><center><a href='payment.php'><input type='button' value='payment'></a></center></p><br><br><br>
+.pill-nav a {
+  display: block;
+  color: black;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 5px;
+}
 
-<p><center><a href='packing.php'><input type='button' value='tracking'></a></center></p><br><br>
+.pill-nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.pill-nav a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+</style>
+</head>
+<body>
 
 
 
-
-
-
-
+<div class="pill-nav">
+  <a class="active" href='show_product.php' >show/edit product</a>
+  <a href='add_product.php' >add product</a>
+  <a href='payment.php' >payment</a>
+  <a href='packing.php' >tracking</a>
+</div>
 
 
 </body>
